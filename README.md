@@ -2,19 +2,21 @@
 
 一个 Chrome/Chromium 扩展，用来同时打开并平铺：
 
+![Prism Preview](./img.png)
+
 - ChatGPT: `https://chatgpt.com/`
 - Gemini: `https://gemini.google.com/app`
 - Claude: `https://claude.ai/new`
 
-然后从一个常驻控制台窗口输入一条消息，同时发送到三个页面。
+从一个常驻控制台窗口输入一条消息，同时发送到三个页面。对比 AI 回答，兼听则明。
+
 
 ## 使用方法
 
 1. 打开 Chrome 的扩展管理页：`chrome://extensions/`
 2. 打开右上角“开发者模式”
 3. 选择“加载已解压的扩展程序”
-4. 选择当前目录：
-   `/Users/chenhuazhi/Downloads/兼听则明`
+4. 选择当前扩展所在的文件夹目录
 5. 点击扩展图标
 6. 扩展会自动打开四个窗口：
    - 左侧 3 个是 ChatGPT / Gemini / Claude
