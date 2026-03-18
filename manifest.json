@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Prism",
+  "version": "0.1.0",
+  "description": "平铺 ChatGPT、Gemini、Claude，并将同一条消息同时发送到三个平台。",
+  "permissions": ["storage", "tabs", "scripting", "system.display"],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Prism"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*"
+      ],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

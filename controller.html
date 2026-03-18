@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prism Controller</title>
+    <link rel="stylesheet" href="controller.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <p class="eyebrow">Prism</p>
+        <h1>常驻控制台</h1>
+        <p class="hint">
+          这个窗口会一直保留在右侧，你可以持续输入并同步发送到三个平台。
+        </p>
+      </section>
+
+      <section class="targets">
+        <label class="target-pill">
+          <input type="checkbox" name="platform" value="chatgpt" checked />
+          <span>ChatGPT</span>
+        </label>
+        <label class="target-pill">
+          <input type="checkbox" name="platform" value="gemini" checked />
+          <span>Gemini</span>
+        </label>
+        <label class="target-pill">
+          <input type="checkbox" name="platform" value="claude" checked />
+          <span>Claude</span>
+        </label>
+      </section>
+
+      <section class="composer">
+        <textarea
+          id="message"
+          placeholder="输入消息。回车直接发送，Shift+Enter 换行。"
+        ></textarea>
+        <div class="actions">
+          <button id="layoutWindows" class="secondary">重新排布窗口</button>
+          <button id="newChats" class="secondary">新建对话</button>
+          <button id="sendAll" class="primary">发送到全部</button>
+        </div>
+      </section>
+
+      <section class="tips">
+        <p>首次使用时，先确保 ChatGPT、Gemini、Claude 都已经登录。</p>
+        <p>如果某个平台页面改版，发送失败时我可以继续调整选择器。</p>
+      </section>
+
+      <pre id="status" class="status">
+点击扩展图标后，三个聊天窗口和这个控制台会一起打开。</pre
+      >
+    </main>
+
+    <script src="controller.js"></script>
+  </body>
+</html>

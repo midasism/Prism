@@ -1,0 +1,127 @@
+:root {
+  color-scheme: light;
+  --bg: #f4efe6;
+  --panel: #fffaf2;
+  --ink: #1d140a;
+  --muted: #6d5a45;
+  --accent: #c44f2a;
+  --accent-strong: #9f3516;
+  --line: #e4d6c4;
+  --shadow: 0 18px 40px rgba(73, 43, 11, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 380px;
+  min-height: 420px;
+  background:
+    radial-gradient(circle at top left, rgba(196, 79, 42, 0.18), transparent 40%),
+    linear-gradient(160deg, #f6efe1 0%, #f0e7da 100%);
+  color: var(--ink);
+  font-family: "SF Pro Display", "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
+
+.app {
+  padding: 18px;
+}
+
+.hero {
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+h1 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.05;
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.panel {
+  background: rgba(255, 250, 242, 0.88);
+  border: 1px solid rgba(228, 214, 196, 0.9);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+  backdrop-filter: blur(10px);
+}
+
+textarea {
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.86);
+  outline: none;
+}
+
+textarea:focus {
+  border-color: rgba(196, 79, 42, 0.8);
+  box-shadow: 0 0 0 4px rgba(196, 79, 42, 0.12);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button.primary {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: #fff;
+}
+
+button.secondary {
+  background: #eadbc8;
+  color: #4f3720;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.status {
+  margin: 12px 0 0;
+  min-height: 74px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8f2e8;
+  color: #5d4b38;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
