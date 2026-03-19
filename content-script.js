@@ -45,8 +45,9 @@ async function sendToChatGPT(text) {
 
 async function sendToGemini(text) {
   const inputBox =
+    document.querySelector(".ql-editor[contenteditable='true']") ||
     document.querySelector("rich-textarea div[contenteditable='true']") ||
-    document.querySelector("div[contenteditable='true']");
+    document.querySelector("div[contenteditable='true'][role='textbox']");
 
   if (!inputBox) {
     throw new Error("未找到 Gemini 输入框");
@@ -54,24 +55,49 @@ async function sendToGemini(text) {
 
   inputBox.focus();
   clearEditable(inputBox);
+  await sleep(100);
 
-  if (!document.execCommand("insertText", false, text)) {
-    inputBox.textContent = text;
-  }
+  const paragraph = document.createElement("p");
+  paragraph.textContent = text;
+  inputBox.appendChild(paragraph);
 
-  fireInputEvents(inputBox);
-  await sleep(500);
+  inputBox.dispatchEvent(new InputEvent("beforeinput", {
+    bubbles: true,
+    cancelable: true,
+    inputType: "insertText",
+    data: text
+  }));
+  inputBox.dispatchEvent(new InputEvent("input", {
+    bubbles: true,
+    cancelable: false,
+    inputType: "insertText",
+    data: text
+  }));
+  inputBox.dispatchEvent(new Event("change", { bubbles: true }));
+
+  await sleep(600);
 
   const sendButton =
+    document.querySelector("button.send-button") ||
     document.querySelector("button[aria-label='Send message']") ||
-    document.querySelector("button[aria-label*='Send']");
+    document.querySelector("button[aria-label='发送']") ||
+    document.querySelector("button[aria-label*='Send']") ||
+    document.querySelector("button[aria-label*='发送']");
 
-  if (!sendButton) {
-    throw new Error("未找到 Gemini 发送按钮");
+  if (sendButton) {
+    sendButton.click();
+    return "Gemini 已发送";
   }
 
-  sendButton.click();
-  return "Gemini 已发送";
+  inputBox.dispatchEvent(new KeyboardEvent("keydown", {
+    key: "Enter",
+    code: "Enter",
+    keyCode: 13,
+    which: 13,
+    bubbles: true,
+    cancelable: true
+  }));
+  return "Gemini 已尝试回车发送";
 }
 
 async function sendToClaude(text) {
